@@ -1,0 +1,23 @@
+{
+  "params": {
+    "SEQ_LEN": 20,
+    "PRED_LEN": 5,
+    "INPUT_DIM": 32,
+    "BATCH_SIZE": 32,
+    "NUM_EPOCHS": 600,
+    "LR_G": 0.0001,
+    "LR_D": 5e-05,
+    "LAMBDA_ADV": 2.0,
+    "LAMBDA_REC": 1.0,
+    "LAMBDA_ANCHOR": 0.8
+  },
+  "emotions": [
+    "angry",
+    "disgust",
+    "fear",
+    "happy",
+    "neutral",
+    "sad",
+    "surprise"
+  ]
+}
