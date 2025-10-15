@@ -564,6 +564,30 @@ def train():
     # ----------------------------
     # After training: save final models and plots
     # ----------------------------
+    # 保存参数到para.txt文件
+    para_path = os.path.join(RUN_DIR, "para.txt")
+    with open(para_path, 'w') as f:
+        f.write(f"INPUT_DIM: {INPUT_DIM}\n")
+        f.write(f"FACE_DIM: {FACE_DIM}\n")
+        f.write(f"SEQ_LEN: {SEQ_LEN}\n")
+        f.write(f"PRED_LEN: {PRED_LEN}\n")
+        f.write(f"NUM_EMOTIONS: {NUM_EMOTIONS}\n")
+        f.write(f"EMOTIONS: {EMOTIONS}\n")
+        f.write(f"BATCH_SIZE: {BATCH_SIZE}\n")
+        f.write(f"NUM_EPOCHS: {NUM_EPOCHS}\n")
+        f.write(f"LR_G: {LR_G}\n")
+        f.write(f"LR_D: {LR_D}\n")
+        f.write(f"BETAS: {BETAS}\n")
+        f.write(f"LAMBDA_ADV: {LAMBDA_ADV}\n")
+        f.write(f"LAMBDA_REC: {LAMBDA_REC}\n")
+        f.write(f"LAMBDA_ANCHOR: {LAMBDA_ANCHOR}\n")
+        f.write(f"PRINT_EVERY: {PRINT_EVERY}\n")
+        f.write(f"PRETRAIN_FRAC: {PRETRAIN_FRAC}\n")
+        f.write(f"WARMUP_FRAC: {WARMUP_FRAC}\n")
+        f.write(f"NOISE_START: {NOISE_START}\n")
+        f.write(f"NOISE_END: {NOISE_END}\n")
+    print(f"Saved parameters to: {para_path}")
+    
     gen_path = os.path.join(MODEL_DIR, "generator.pth")
     disc_path = os.path.join(MODEL_DIR, "discriminator.pth")
     torch.save(G.state_dict(), gen_path)
