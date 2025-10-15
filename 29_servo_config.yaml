@@ -1,0 +1,203 @@
+A0:
+  info: L_eyebrow_head_ver 左眉头 下——上
+  channel_idx: 0
+  start_deg: 82
+  end_deg: 97
+  temp_deg: 95
+  coefficient: 1
+A1:
+  info: R_eyebrow_head_ver 右眉头 下——上
+  channel_idx: 1
+  start_deg: 120
+  end_deg: 105
+  temp_deg: 110
+  coefficient: 1
+A2:
+  info: L_eyebrow_head_hor 左眉头 内——外
+  channel_idx: 2
+  start_deg: 75
+  end_deg: 110
+  temp_deg: 110
+  coefficient: 1
+A3:
+  info: R_eyebrow_head_hor 右眉头 内——外
+  channel_idx: 3
+  start_deg: 100
+  end_deg: 65
+  temp_deg: 65
+  coefficient: 1
+A4:
+  info: L_eyebrow_tail 左眉尾 上——下
+  channel_idx: 4
+  start_deg: 0
+  end_deg: 49
+  temp_deg: 12
+  coefficient: 1
+A5:
+  info: R_eyebrow_tail 右眉尾 上——下
+  channel_idx: 5
+  start_deg: 178
+  end_deg: 133
+  temp_deg: 167
+  coefficient: 1
+A6:
+  info: L_upper_eyelid 开——合
+  channel_idx: 6
+  start_deg: 85
+  end_deg: 140
+  temp_deg: 88
+  coefficient: 1
+A7:
+  info: R_upper_eyelid 开——合
+  channel_idx: 7
+  start_deg: 103
+  end_deg: 48
+  temp_deg: 96
+  coefficient: 1
+A8:
+  info: L_vertical_eyeball 左眼球 下——上
+  channel_idx: 8
+  start_deg: 60
+  end_deg: 95
+  temp_deg: 78
+  coefficient: 1
+A9:
+  info: R_vertical_eyeball 右眼球 下——上
+  channel_idx: 9
+  start_deg: 140
+  end_deg: 105
+  temp_deg: 121
+  coefficient: 1
+A10:
+  info: L_horizontal_eyeball 左眼球 外——内
+  channel_idx: 10
+  start_deg: 70
+  end_deg: 110
+  temp_deg: 86
+  coefficient: 1
+A11:
+  info: R_horizontal_eyeball 右眼球 外——内
+  channel_idx: 11
+  start_deg: 120
+  end_deg: 80
+  temp_deg: 105
+  coefficient: 1
+A12:
+  info: L_cheek 左脸颊 下——上
+  channel_idx: 12
+  start_deg: 60
+  end_deg: 110
+  temp_deg: 60
+  coefficient: 1
+A13:
+  info: R_cheek 右脸颊 下——上
+  channel_idx: 13
+  start_deg: 120
+  end_deg: 70
+  temp_deg: 120
+  coefficient: 1
+A14:
+  info: nose 鼻子 上——下
+  channel_idx: 14
+  start_deg: 100
+  end_deg: 150
+  temp_deg: 150
+  coefficient: 1
+A15:
+  info: mid_upper_lip_hor 中上嘴唇 后——前
+  channel_idx: 15
+  start_deg: 70
+  end_deg: 140
+  temp_deg: 85
+  coefficient: 1
+A16:
+  info: mid_upper_lip_ver 中上嘴唇 上——下
+  channel_idx: 16
+  start_deg: 75
+  end_deg: 155
+  temp_deg: 135
+  coefficient: 1
+A17:
+  info: mid_lower_lip_hor 中下嘴唇 后——前
+  channel_idx: 17
+  start_deg: 40
+  end_deg: 180
+  temp_deg: 124
+  coefficient: 1
+A18:
+  info: mid_lower_lip_ver 中下嘴唇 上——下
+  channel_idx: 18
+  start_deg: 180
+  end_deg: 40
+  temp_deg: 111
+  coefficient: 1
+A19:
+  info: L_upper_lip 左上嘴唇 上——下
+  channel_idx: 19
+  start_deg: 55
+  end_deg: 165
+  temp_deg: 143
+  coefficient: 1
+A20:
+  info: R_upper_lip 右上嘴唇 上——下
+  channel_idx: 20
+  start_deg: 110
+  end_deg: 0
+  temp_deg: 28
+  coefficient: 1
+A21:
+  info: L_lower_lip 左下嘴唇 上——下
+  channel_idx: 21
+  start_deg: 120
+  end_deg: 30
+  temp_deg: 79
+  coefficient: 1
+A22:
+  info: R_lower_lip 右下嘴唇 上——下
+  channel_idx: 22
+  start_deg: 20
+  end_deg: 110
+  temp_deg: 97
+  coefficient: 1
+A23:
+  info: L_upper_mouth 左嘴角上侧 前——后
+  channel_idx: 23
+  start_deg: 8
+  end_deg: 73
+  temp_deg: 44
+  coefficient: 1
+A24:
+  info: L_lower_mouth 左嘴角下侧 上——下
+  channel_idx: 24
+  start_deg: 79
+  end_deg: 137
+  temp_deg: 104
+  coefficient: 1
+A25:
+  info: R_upper_mouth 右嘴角上侧 前——后
+  channel_idx: 25
+  start_deg: 175
+  end_deg: 110
+  temp_deg: 139
+  coefficient: 1
+A26:
+  info: R_lower_mouth 右嘴角下侧 上——下
+  channel_idx: 26
+  start_deg: 100
+  end_deg: 45
+  temp_deg: 75
+  coefficient: 1
+A27:
+  info: chin_vertical 下巴 上——下
+  channel_idx: 27
+  start_deg: 5
+  end_deg: 32
+  temp_deg: 5
+  coefficient: 1
+A28:
+  info: chin_horizontal 下巴 左——右
+  channel_idx: 28
+  start_deg: 73
+  end_deg: 107
+  temp_deg: 90
+  coefficient: 1
