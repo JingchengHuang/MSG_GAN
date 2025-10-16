@@ -58,9 +58,9 @@ LR_D = 1e-5
 BETAS = (0.5, 0.999)
 
 # loss weights (target values)
-LAMBDA_ADV = 0.01
-LAMBDA_REC = 1.0
-LAMBDA_ANCHOR = 0.8
+LAMBDA_ADV = 0.8
+LAMBDA_REC = 1.5
+LAMBDA_ANCHOR = 1.0
 
 PRINT_EVERY = 50
 
@@ -355,15 +355,16 @@ def train():
             history["D_fake_mean"].append(0.0)
 
             # 每100个epoch保存一次模型
-            if epoch % 100 == 0:
-                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{epoch}.pth")
-                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{epoch}.pth")
+            curr_epoch_global = epoch_counter + epoch
+            if curr_epoch_global % 100 == 0:
+                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{curr_epoch_global}.pth")
+                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{curr_epoch_global}.pth")
                 torch.save(G.state_dict(), gen_path)
                 torch.save(D.state_dict(), disc_path)
-                print(f"Saved models at epoch {epoch}: {gen_path}, {disc_path}")
+                print(f"Saved models at epoch {curr_epoch_global}: {gen_path}, {disc_path}")
 
             epoch_counter += 1
-            print(f"Pretrain Epoch {epoch} summary: G={history['G_loss'][-1]:.4f} rec={history['rec_loss'][-1]:.4f} anchor={history['anchor_loss'][-1]:.4f}")
+            print(f"Pretrain Epoch {epoch_counter} summary: G={history['G_loss'][-1]:.4f} rec={history['rec_loss'][-1]:.4f} anchor={history['anchor_loss'][-1]:.4f}")
 
     # -----------------
     # 2) Warmup adversarial: lambda_adv linearly increases from adv_start to LAMBDA_ADV
@@ -467,7 +468,7 @@ def train():
             
             epoch_counter += 1
 
-            print(f"Warmup Epoch {curr_epoch_global} summary: lambda_adv={curr_lambda_adv:.4f} G={history['G_loss'][-1]:.4f} D={history['D_loss'][-1]:.4f} adv={history['adv_loss'][-1]:.4f} rec={history['rec_loss'][-1]:.4f} anchor={history['anchor_loss'][-1]:.4f} D_real={history['D_real_mean'][-1]:.4f} D_fake={history['D_fake_mean'][-1]:.4f}")
+            print(f"Warmup Epoch {epoch_counter} summary: lambda_adv={curr_lambda_adv:.4f} G={history['G_loss'][-1]:.4f} D={history['D_loss'][-1]:.4f} adv={history['adv_loss'][-1]:.4f} rec={history['rec_loss'][-1]:.4f} anchor={history['anchor_loss'][-1]:.4f} D_real={history['D_real_mean'][-1]:.4f} D_fake={history['D_fake_mean'][-1]:.4f}")
 
     # -----------------
     # 3) Final adversarial: use full LAMBDA_ADV, continue annealing noise
@@ -559,7 +560,7 @@ def train():
             
             epoch_counter += 1
 
-            print(f"Final Epoch {curr_epoch_global} summary: G={history['G_loss'][-1]:.4f} D={history['D_loss'][-1]:.4f} adv={history['adv_loss'][-1]:.4f} rec={history['rec_loss'][-1]:.4f} anchor={history['anchor_loss'][-1]:.4f} D_real={history['D_real_mean'][-1]:.4f} D_fake={history['D_fake_mean'][-1]:.4f}")
+            print(f"Final Epoch {epoch_counter} summary: G={history['G_loss'][-1]:.4f} D={history['D_loss'][-1]:.4f} adv={history['adv_loss'][-1]:.4f} rec={history['rec_loss'][-1]:.4f} anchor={history['anchor_loss'][-1]:.4f} D_real={history['D_real_mean'][-1]:.4f} D_fake={history['D_fake_mean'][-1]:.4f}")
 
     # ----------------------------
     # After training: save final models and plots
