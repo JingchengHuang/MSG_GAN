@@ -54,7 +54,7 @@ NUM_EPOCHS = 1200    # default; you can reduce for testing
 
 # separate learning rates for G and D
 LR_G = 1e-4
-LR_D = 1e-5
+LR_D = 2e-5
 BETAS = (0.5, 0.999)
 
 # loss weights (target values)
@@ -355,13 +355,12 @@ def train():
             history["D_fake_mean"].append(0.0)
 
             # 每100个epoch保存一次模型
-            curr_epoch_global = epoch_counter + epoch
-            if curr_epoch_global % 100 == 0:
-                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{curr_epoch_global}.pth")
-                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{curr_epoch_global}.pth")
+            if epoch % 100 == 0:
+                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{epoch}.pth")
+                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{epoch}.pth")
                 torch.save(G.state_dict(), gen_path)
                 torch.save(D.state_dict(), disc_path)
-                print(f"Saved models at epoch {curr_epoch_global}: {gen_path}, {disc_path}")
+                print(f"Saved models at epoch {epoch}: {gen_path}, {disc_path}")
 
             epoch_counter += 1
             print(f"Pretrain Epoch {epoch_counter} summary: G={history['G_loss'][-1]:.4f} rec={history['rec_loss'][-1]:.4f} anchor={history['anchor_loss'][-1]:.4f}")
@@ -373,7 +372,6 @@ def train():
     if warmup_epochs > 0:
         print("=== Warmup adversarial training (lambda_adv increasing) ===")
         for epoch in range(1, warmup_epochs + 1):
-            curr_epoch_global = epoch_counter + epoch
             # linearly increase lambda_adv from adv_start -> LAMBDA_ADV over warmup_epochs
             frac = (epoch - 1) / max(1, warmup_epochs - 1)
             curr_lambda_adv = adv_start + frac * (LAMBDA_ADV - adv_start)
@@ -459,12 +457,12 @@ def train():
             history["D_fake_mean"].append(epoch_d_fake_mean / n_batches)
             
             # 每100个epoch保存一次模型
-            if curr_epoch_global % 100 == 0:
-                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{curr_epoch_global}.pth")
-                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{curr_epoch_global}.pth")
+            if epoch % 100 == 0:
+                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{epoch_counter}.pth")
+                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{epoch_counter}.pth")
                 torch.save(G.state_dict(), gen_path)
                 torch.save(D.state_dict(), disc_path)
-                print(f"Saved models at epoch {curr_epoch_global}: {gen_path}, {disc_path}")
+                print(f"Saved models at epoch {epoch_counter}: {gen_path}, {disc_path}")
             
             epoch_counter += 1
 
@@ -476,7 +474,6 @@ def train():
     if final_epochs > 0:
         print("=== Final adversarial training (full lambda_adv) ===")
         for epoch in range(1, final_epochs + 1):
-            curr_epoch_global = epoch_counter + epoch
             curr_lambda_adv = LAMBDA_ADV
             # epoch progress across final portion and previous warmup to compute sigma annealing
             total_adv_epochs = warmup_epochs + final_epochs
@@ -551,12 +548,12 @@ def train():
             history["D_fake_mean"].append(epoch_d_fake_mean / n_batches)
             
             # 每100个epoch保存一次模型
-            if curr_epoch_global % 100 == 0:
-                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{curr_epoch_global}.pth")
-                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{curr_epoch_global}.pth")
+            if epoch % 100 == 0:
+                gen_path = os.path.join(MODEL_DIR, f"generator_epoch_{epoch_counter}.pth")
+                disc_path = os.path.join(MODEL_DIR, f"discriminator_epoch_{epoch_counter}.pth")
                 torch.save(G.state_dict(), gen_path)
                 torch.save(D.state_dict(), disc_path)
-                print(f"Saved models at epoch {curr_epoch_global}: {gen_path}, {disc_path}")
+                print(f"Saved models at epoch {epoch_counter}: {gen_path}, {disc_path}")
             
             epoch_counter += 1
 
